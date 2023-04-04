@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tactile Map Prototype</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Tactile Map</h1>
+    <script type="text/javascript" 
+    src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nla6b8uhez&callback=initMap"></script>
+    <script type="text/javascript">
+        var map = null;
+
+        function initMap() {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(37.3595704, 127.105399),
+                zoom: 10
+            });
+        }
+    </script>
+</body>
+</html>
