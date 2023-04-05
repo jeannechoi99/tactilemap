@@ -38,7 +38,7 @@ labelbtn.onclick = function(e) {
 $('#search_where').click( function() {
     console.log($('#start').val());
     //$('start-end-result').text("출발지: ");
-    $('#start-end-result').text("출발지: " + $('#start').val() + " 도착지: " + $('#destination').val());
+    $('#start-end-result').text("출발지: " + $('#start').val() + "\n 도착지: " + $('#destination').val());
     callAjax($('#start').val());
     //console.log($('start-end-result').text());
 });
@@ -47,7 +47,7 @@ function callAjax(query) {
     $.ajax({
             url:'map_proxy.php',
             dataType:'json',
-            type:'POST',
+            type:'GET',
             data:{'query':query},
             success: function(result){
                 // $("#where_result").text("result"); 
