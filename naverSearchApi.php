@@ -1,4 +1,29 @@
-<?php 
+<?php
+  $client_id = "CMZE91qYmtlsB9jCWqIr";
+  $client_secret = "C7FiM7nLwP";
+  $encText = urlencode("네이버오픈API");
+  $url = "https://openapi.naver.com/v1/search/local.xml?query=".$encText; // json 결과
+//  $url = "https://openapi.naver.com/v1/search/blog.xml?query=".$encText; // xml 결과
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  $headers = array();
+  $headers[] = "X-Naver-Client-Id: ".$client_id;
+  $headers[] = "X-Naver-Client-Secret: ".$client_secret;
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  $response = curl_exec ($ch);
+  $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  echo "status_code:".$status_code."
+";
+  curl_close ($ch);
+  if($status_code == 200) {
+    echo $response;
+  } else {
+    echo "Error 내용:".$response;
+  }
+?>
+
+<!-- <?php 
 class Place
 {
         private $key = "CMZE91qYmtlsB9jCWqIr"; // 사용자가 발급받은 오픈 API 키 
@@ -29,4 +54,4 @@ class Place
                 return $result; 
         }
 }       
-?>
+?> -->
