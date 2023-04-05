@@ -54,7 +54,7 @@ function callAjax(query) {
                 console.log(result);
             },
             error: function(){
-                console.log("실패입니당");
+                console.log("실패입니당당이");
             }
     });
 };
