@@ -45,7 +45,7 @@ $('#search_where').click( function() {
 
 function callAjax(query) {
     $.ajax({
-            url:'map_proxy.php',
+            url:'naverSearchApi.php',
             dataType:'json',
             type:'GET',
             data:{'query':query},

@@ -1,7 +1,7 @@
 <?php
   $client_id = "CMZE91qYmtlsB9jCWqIr";
   $client_secret = "C7FiM7nLwP";
-  $encText = urlencode("네이버오픈API");
+  $encText = urlencode("유성구청근처맛집");
   $url = "https://openapi.naver.com/v1/search/local.xml?query=".$encText; // json 결과
 //  $url = "https://openapi.naver.com/v1/search/blog.xml?query=".$encText; // xml 결과
   $ch = curl_init();
