@@ -42,9 +42,9 @@ function callAjax(query) {
     $.ajax({
             url:'map_proxy.php',
             dataType:'json',
-            type:'POST',
+            type:'get',
             data:{'query':query},
-            success:function(result){
+            success: function(result){
                     console.log(result);
             }
     });
