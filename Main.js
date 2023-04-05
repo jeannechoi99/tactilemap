@@ -9,7 +9,7 @@ var mapOptions = {
     })
 };
 
-var map = new naver.maps.Map('map', mapOptions);
+var map = new naver.maps.Map('map-container', mapOptions);
 new naver.maps.Marker({
     position: new naver.maps.LatLng(36.362226199413065, 127.35606790993106),
     map,
@@ -19,6 +19,7 @@ var labelLayer = new naver.maps.LabelLayer();
 const labelbtn = document.getElementById("label");
 
 labelbtn.onclick = function(e) {
+    console.log("버튼버튼")
     e.preventDefault();
 
     if (labelLayer.getMap()) {
@@ -35,17 +36,25 @@ labelbtn.onclick = function(e) {
 };
 
 $('#search_where').click( function() {
-    callAjax($('#where').val());
+    console.log($('#start').val());
+    //$('start-end-result').text("출발지: ");
+    $('#start-end-result').text("출발지: " + $('#start').val() + " 도착지: " + $('#destination').val());
+    callAjax($('#start').val());
+    //console.log($('start-end-result').text());
 });
 
 function callAjax(query) {
     $.ajax({
             url:'map_proxy.php',
             dataType:'json',
-            type:'get',
+            type:'POST',
             data:{'query':query},
             success: function(result){
-                    console.log(result);
+                // $("#where_result").text("result"); 
+                console.log(result);
+            },
+            error: function(){
+                console.log("실패입니당");
             }
     });
 };
