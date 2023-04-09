@@ -1,7 +1,7 @@
 var mapOptions = {
     center: new naver.maps.LatLng(36.362226199413065, 127.35606790993106),
     zoom: 17,
-    mapTypeControl: true,
+    mapTypeControl: false,
     minZoom: 17,
     maxZoom: 17,
     mapTypes: new naver.maps.MapTypeRegistry({
@@ -10,10 +10,10 @@ var mapOptions = {
 };
 
 var map = new naver.maps.Map('map-container', mapOptions);
-new naver.maps.Marker({
-    position: new naver.maps.LatLng(36.362226199413065, 127.35606790993106),
-    map,
-});
+// new naver.maps.Marker({
+//     position: new naver.maps.LatLng(36.362226199413065, 127.35606790993106),
+//     map,
+// });
 var labelLayer = new naver.maps.LabelLayer();
 
 const labelbtn = document.getElementById("label");
@@ -26,7 +26,7 @@ labelbtn.onclick = function(e) {
         labelLayer.setMap(null);
         labelbtn.innerText = "레이블 켜기";
         $(this).removeClass("control-on");
-
+    
     } else {
         labelLayer.setMap(map);
         labelbtn.innerText = "레이블 끄기";
@@ -50,7 +50,6 @@ function callAjax(query) {
             type:'GET',
             data:{'query':query},
             success: function(result){
-                // $("#where_result").text("result"); 
                 console.log(result);
             },
             error: function(){
@@ -58,3 +57,40 @@ function callAjax(query) {
             }
     });
 };
+
+function loadMapImage(input) {
+    var file = input.files[0];
+
+    var newMap = document.createElement("img");
+    newMap.setAttribute("class", 'img');
+    newMap.setAttribute("id", 'created-map');
+    newMap.src = URL.createObjectURL(file);
+
+    var container = document.getElementById('show-map');
+    container.appendChild(newMap);
+}
+
+//****네이버맵 스크린샷 하는 것 불법 */
+// $(function(){
+//     $("#make-map").click(function(e){
+//         console.log("눌렸당!");
+//         html2canvas(document.getElementById("body-container")).then(function(canvas) {
+//                 saveAs(canvas.toDataURL("image/jpeg"), '_Media.jpg');
+//             })
+//         })
+//     // html2canvas(document.getElementById("map-container")).then(function(canvas){
+//     //     var el = document.createElement("a")
+//     //     el.href = canvas.toDataURL("image/jpeg")
+//     //     el.download = '이미지.jpeg'
+//     //     el.click()
+//     // })
+//     })
+
+// function saveAs(uri, filename) {
+//     var link = document.createElement('a');
+//     if (typeof link.download === 'string') {
+//         link.href = uri;
+//         link.download = filename;
+//         link.click();
+//     }
+// }
