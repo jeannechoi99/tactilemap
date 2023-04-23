@@ -9,7 +9,9 @@ var mapOptions = {
     })
 };
 
-var map = new naver.maps.Map('map-container', mapOptions);
+//var map = new naver.maps.Map('map-container', mapOptions);
+
+
 // new naver.maps.Marker({
 //     position: new naver.maps.LatLng(36.362226199413065, 127.35606790993106),
 //     map,
